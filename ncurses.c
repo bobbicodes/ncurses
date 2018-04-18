@@ -2,8 +2,26 @@
 
 int main()
 {
+	int ch;
+
 	initscr();
-	printw("Yo, what up.");
+	raw();
+	keypad(stdscr, TRUE);
+	noecho();
+
+	printw("Type a character for some bold\n");
+	ch = getch();
+
+	if(ch == KEY_F(1))
+		printw("F1 Key pressed");
+
+	else
+	{	printw("The pressed key is ");
+		attron(A_BOLD);
+		printw("%c", ch);
+		attroff(A_BOLD);
+	}
+	
 	refresh();
 	getch();
 	endwin();
